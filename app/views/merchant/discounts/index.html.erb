@@ -1,0 +1,18 @@
+<h1 align = "center">Bulk Discount</h1>
+<center>
+<table>
+  <tr>
+    <th>Percent Off</th>
+    <th>Quantity Required</th>
+    <th>Created At</th>
+    <th>Active?</th>
+  </tr>
+  <% @discounts.each do |discount| %>
+    <tr>
+      <td><p><%= discount.percent_off %> </p></td>
+      <td><p><%= discount.requirement %> </p></td>
+      <td><p><%= discount.created_at %> </p></td>
+      <td><p><%= discount.active? %> </p></td>
+    </tr>
+  <% end %>
+</table>
