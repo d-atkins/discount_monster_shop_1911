@@ -11,10 +11,10 @@ RSpec.describe "As a merchant employee" do
     visit merchant_discounts_path
     click_link("Add a New Bulk Discount")
 
-    fill_in :percent_off, with: 15
-    fill_in :requirement, with: 30
+    fill_in :discount_percent_off, with: 15
+    fill_in :discount_requirement, with: 30
 
-    click_button("Submit")
+    click_button("Create Discount")
 
     expect(current_path).to eq(merchant_discounts_path)
 
