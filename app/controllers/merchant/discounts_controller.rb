@@ -1,6 +1,6 @@
 class Merchant::DiscountsController < Merchant::BaseController
   def index
-    @discounts = current_user.merchant.discounts
+    @merchant = current_user.merchant
   end
 
   def new
@@ -17,6 +17,12 @@ class Merchant::DiscountsController < Merchant::BaseController
       @discount = discount
       render :new
     end
+  end
+
+  def update
+    discount = Discount.find(params[:id])
+    discount.update(active?: false)
+    redirect_to merchant_discounts_path
   end
 
   private
