@@ -45,7 +45,7 @@ Rails.application.routes.draw do
     resources :items, only: %i[index show edit update destroy]
     resources :orders, only: [:show]
     resources :item_orders, only: [:update]
-    resources :discounts, only: [:index, :new]
+    resources :discounts, only: [:index, :new, :create]
   end
 
   resources :reviews, only: [:edit, :update, :destroy]
