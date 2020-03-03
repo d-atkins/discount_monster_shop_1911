@@ -1,0 +1,12 @@
+<center>
+  <h1><%= @discount.percent_off %>% off <%= @discount.requirement %>+ items from <%= @discount.merchant.name %></h1>
+  <p>Discount:<%= @discount.percent_off %>% </p>
+  <p>Quantity Required: <%= @discount.requirement %></p>
+  <p>Created: <%= @discount.created_at %></p>
+  <p>
+    Status: <%= @discount.status %>
+    <% if !@discount.active? %>
+      (ended <%= @discount.updated_at %>)
+    <% end %>
+  </p>
+</center>
