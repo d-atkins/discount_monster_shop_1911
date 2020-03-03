@@ -8,12 +8,13 @@
     <th>Created At</th>
     <th>Active?</th>
   </tr>
-  <% @discounts.each do |discount| %>
+  <% @merchant.discounts.each do |discount| %>
     <tr>
       <td><p><%= discount.percent_off %> </p></td>
       <td><p><%= discount.requirement %> </p></td>
       <td><p><%= discount.created_at %> </p></td>
       <td><p><%= discount.active? %> </p></td>
+      <td><p><%= link_to 'Deactivate', merchant_discount_path(discount), method: :patch if discount.active?%></p></td>
     </tr>
   <% end %>
 </table>
