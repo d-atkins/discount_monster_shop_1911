@@ -13,6 +13,6 @@ RSpec.describe "As a merchant employee" do
     expect(current_path).to eq(merchant_discounts_path)
     user.reload
     visit merchant_discounts_path
-    expect(page).to have_content('false')
+    expect(page).to_not have_content(5)
   end
 end
