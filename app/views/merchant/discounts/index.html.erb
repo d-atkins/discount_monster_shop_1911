@@ -8,7 +8,7 @@
     <th>Created At</th>
     <th>Active?</th>
   </tr>
-  <% @merchant.discounts.each do |discount| %>
+  <% @merchant.discounts.active.each do |discount| %>
     <tr>
       <td><p><%= discount.percent_off %> </p></td>
       <td><p><%= discount.requirement %> </p></td>
