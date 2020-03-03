@@ -7,6 +7,10 @@ class Merchant::DiscountsController < Merchant::BaseController
     @discount = Discount.new
   end
 
+  def show
+    @discount = Discount.find(params[:id])
+  end
+
   def create
     discount = current_user.merchant.discounts.create(discount_params)
     if discount.save
@@ -21,7 +25,7 @@ class Merchant::DiscountsController < Merchant::BaseController
 
   def update
     discount = Discount.find(params[:id])
-    discount.update(active?: false)
+    discount.update(status: 0)
     redirect_to merchant_discounts_path
   end
 

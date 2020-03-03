@@ -1,20 +1,20 @@
-<h1 align = "center">Bulk Discount</h1>
+<h1 align = "center">Active Bulk Discounts</h1>
 <p><%= link_to 'Add a New Bulk Discount', '/merchant/discounts/new' %></p>
 <center>
 <table>
   <tr>
+    <th>Discount ID</th>
     <th>Percent Off</th>
     <th>Quantity Required</th>
     <th>Created At</th>
-    <th>Active?</th>
   </tr>
   <% @merchant.discounts.active.each do |discount| %>
-    <tr>
+    <tr id="discount-<%= discount.id %>">
+      <td><p>#<%= link_to discount.id, merchant_discount_path(discount) %> </p></td>
       <td><p><%= discount.percent_off %> </p></td>
       <td><p><%= discount.requirement %> </p></td>
       <td><p><%= discount.created_at %> </p></td>
-      <td><p><%= discount.active? %> </p></td>
-      <td><p><%= link_to 'Deactivate', merchant_discount_path(discount), method: :patch if discount.active?%></p></td>
+      <td><p><%= link_to 'Deactivate', merchant_discount_path(discount), method: :patch if discount.active? %></p></td>
     </tr>
   <% end %>
 </table>

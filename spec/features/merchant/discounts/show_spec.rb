@@ -8,12 +8,11 @@ RSpec.describe "As a merchant employee" do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    visit '/merchant'
-    click_link("My Bulk Discounts")
+    visit merchant_discounts_path
+    click_link(discount.id.to_s)
 
-    expect(current_path).to eq('/merchant/discounts')
-
-    within("#discount-#{discount.id}") { expect(page).to have_content(discount.percent_off) }
-    within("#discount-#{discount.id}") { expect(page).to have_content(discount.requirement) }
+    expect(current_path).to eq(merchant_discount_path(discount))
+    expect(page).to have_content(discount.percent_off)
+    expect(page).to have_content(discount.requirement)
   end
 end
