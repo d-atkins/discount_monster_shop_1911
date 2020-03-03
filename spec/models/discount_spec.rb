@@ -9,4 +9,14 @@ describe Discount, type: :model do
   describe "relationships" do
     it {should belong_to :merchant}
   end
+
+  describe "instance methods" do
+    it "active" do
+      discount1 = create(:random_discount)
+      discount2 = create(:random_discount)
+      create(:random_discount, active?: false)
+
+      expect(Discount.active).to eq([discount1, discount2])
+    end
+  end
 end
