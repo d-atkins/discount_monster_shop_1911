@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   def error_message(resource)
-    flash[:error] = resource.errors.full_messages.to_sentence
+    flash.now[:error] = resource.errors.full_messages.to_sentence
   end
 
   def current_user
