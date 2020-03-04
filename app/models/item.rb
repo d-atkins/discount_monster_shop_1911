@@ -37,4 +37,20 @@ class Item <ApplicationRecord
     item_orders.sum(:quantity)
   end
 
+  def best_discount(quantity)
+    discounts
+      .where("requirement <= #{quantity}")
+      .order(percent_off: :desc)
+      .take
+  end
+
+  def modified_price(quantity)
+    discount = best_discount(quantity)
+    if discount
+      price - (price * (discount.percent_off.to_f / 100))
+    else
+      price
+    end
+  end
+
 end
