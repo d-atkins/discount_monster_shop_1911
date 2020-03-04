@@ -28,7 +28,7 @@ class Cart
 
   def total
     @contents.sum do |item_id,quantity|
-      Item.find(item_id).price * quantity
+      Item.find(item_id).modified_price(quantity) * quantity
     end
   end
 
