@@ -23,7 +23,7 @@ class Cart
   end
 
   def subtotal(item)
-    item.price * @contents[item.id.to_s]
+    item.modified_price(@contents[item.id.to_s]) * @contents[item.id.to_s]
   end
 
   def total
