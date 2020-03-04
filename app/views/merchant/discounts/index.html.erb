@@ -8,6 +8,7 @@
     <th>Quantity Required</th>
     <th>Created At</th>
   </tr>
+  <section id='discounts'>
   <% @merchant.discounts.active.each do |discount| %>
     <tr id="discount-<%= discount.id %>">
       <td><p>#<%= link_to discount.id, merchant_discount_path(discount) %> </p></td>
@@ -17,4 +18,5 @@
       <td><p><%= link_to 'Deactivate', merchant_discount_path(discount), method: :patch if discount.active? %></p></td>
     </tr>
   <% end %>
+</section>
 </table>

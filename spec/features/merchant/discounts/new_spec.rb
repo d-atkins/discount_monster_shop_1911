@@ -18,8 +18,10 @@ RSpec.describe "As a merchant employee" do
 
     expect(current_path).to eq(merchant_discounts_path)
 
-    expect(page).to have_content('15')
-    expect(page).to have_content('30')
+    within('#discounts') do
+      expect(page).to have_content('15')
+      expect(page).to have_content('30')
+    end
   end
 
   it "I get an error if I leave a field blank" do
@@ -37,10 +39,10 @@ RSpec.describe "As a merchant employee" do
     click_button("Create Discount")
 
     expect(page).to have_content("Requirement can't be blank")
-    
+
     user.reload
     visit merchant_discounts_path
 
-    expect(page).to_not have_content('15')
+    within('#discounts') { expect(page).to_not have_content('15') }
   end
 end
