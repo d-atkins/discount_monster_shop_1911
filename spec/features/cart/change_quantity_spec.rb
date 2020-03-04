@@ -45,16 +45,14 @@ RSpec.describe 'cart quantity' do
       expect(page).to have_content("#{item1.name}")
       expect(page).to have_content("Quantity")
 
-      within "#qty" do
-        3.times { click_on("+") }
-        expect(page).to have_content("$40.00")
+      3.times { click_on("+") }
+      expect(page).to have_content("$40.00")
 
-        click_button("+")
-        expect(page).to have_content("$25.00")
+      click_button("+")
+      expect(page).to have_content("$25.00")
 
-        click_button("+")
-        expect(page).to have_content("$30.00")
-      end
+      click_button("+")
+      expect(page).to have_content("$30.00")
     end
 
     it "sees button to decrement the item quantity and if goes to 0 item is removed from cart" do
