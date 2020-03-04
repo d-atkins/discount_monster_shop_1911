@@ -32,6 +32,29 @@ RSpec.describe 'cart quantity' do
       end
     end
 
+    it "I see a discount is applied when I add enough of an item to my cart" do
+      item1 = create(:random_item, inventory: 50, price: 10)
+      discount = create(:random_discount, requirement: 5, percent_off: 50)
+      item1.merchant.discounts << discount
+
+      visit "/items/#{item1.id}"
+      click_on "Add To Cart"
+
+      visit '/cart'
+
+      expect(page).to have_content("#{item1.name}")
+      expect(page).to have_content("Quantity")
+
+      3.times { click_on("+") }
+      expect(page).to have_content("$40.00")
+
+      click_button("+")
+      expect(page).to have_content("$25.00")
+
+      click_button("+")
+      expect(page).to have_content("$30.00")
+    end
+
     it "sees button to decrement the item quantity and if goes to 0 item is removed from cart" do
       item1 = create(:random_item, inventory: 4)
 

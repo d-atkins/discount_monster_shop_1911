@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 describe "instance methods" do
   before(:each) do
     @item1 = create(:random_item, inventory: 4)

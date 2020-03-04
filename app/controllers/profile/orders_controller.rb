@@ -17,7 +17,7 @@ class Profile::OrdersController < Profile::BaseController
         order.item_orders.create({
           item: item,
           quantity: quantity,
-          price: item.price
+          price: item.modified_price(quantity)
           })
       end
       session.delete(:cart)

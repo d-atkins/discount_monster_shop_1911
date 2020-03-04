@@ -27,7 +27,9 @@
         </p>
       </td>
       <td>
-        <p><%=number_to_currency(item.price)%></p>
+        <p><%=number_to_currency(item.modified_price(quantity))%>
+          <%= "(#{item.best_discount(quantity).percent_off}% off!)" if item.best_discount(quantity) %>
+        </p>
       </td>
       <td>
         <center id='qty'>
