@@ -39,7 +39,7 @@ class Item <ApplicationRecord
 
   def best_discount(quantity)
     discounts
-      .where("requirement <= #{quantity}")
+      .where("status = 1 AND requirement <= #{quantity}")
       .order(percent_off: :desc)
       .take
   end
